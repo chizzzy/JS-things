@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .inbox {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: orange;
+        }
+        .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input {
+            margin-right: 20px;
+        }
+    </style>
+    <div class="inbox">
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+                <p>IT'S IN THE BAAAAG</p>
+        </div>
+    </div>
+    <script>
+        let lastChecked;
+    function handleCheck(e) {
+        let inBetween = false;
+        if (e.shiftKey && this.checked) {
+            checkboxes.forEach(checkbox => {
+                console.log(checkbox);
+                if (checkbox === this || checkbox === lastChecked) {
+                    inBetween = !inBetween;
+                }
+                if (inBetween) {
+                    checkbox.checked = true;
+                }
+            })
+        }
+        lastChecked = this;
+        console.log(this);
+    }
+    const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+    console.log(checkboxes);
+    checkboxes.forEach((e) => e.addEventListener('click', handleCheck))
+    </script>
+</body>
+</html>

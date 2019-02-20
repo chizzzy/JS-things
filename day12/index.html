@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="colors">
+    <div id="first"></div>
+    <div id="second"></div>
+    <audio src="gimn.mp3" type="audio/mp3"></audio>
+</div>
+    <style>
+        .blue {
+            background-color: blue;
+            height: 920px;
+            width: 100vw;
+        }
+        .yellow {
+            background-color: yellow;
+            height: 920px;
+            width: 100vw;
+        }
+        .colors {
+            display: flex;
+            flex-direction: column
+        }
+    </style>
+    <script>
+    const audio = document.querySelector('audio');
+    const blue = document.getElementById('first');
+    const yellow = document.getElementById('second');
+    const pressed = [];
+    const secretCode = 'славаукраине'
+    window.addEventListener('keyup', (e) => {
+        console.log(e.key);
+        pressed.push(e.key);
+        pressed.splice(-secretCode.length -1, pressed.length - secretCode.length)
+        if(pressed.join('').toLowerCase().includes(secretCode)) {
+            yellow.classList.add('yellow');
+            blue.classList.add('blue')
+            audio.play();
+        }
+    })
+    </script>
+
+</body>
+</html>

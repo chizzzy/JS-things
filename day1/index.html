@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+        <div class="keys">
+        <div data-key="65" class="key">
+            <span>A</span>
+        </div>
+        <div data-key="83" class="key">
+                <span>S</span>
+        </div>
+        <div  data-key="68" class="key">
+                <span>D</span>
+        </div>
+        <div data-key="70" class="key">
+                <span>F</span>
+        </div>
+        <div data-key="71" class="key">
+                <span>G</span>
+        </div>
+        <div data-key="72" class="key">
+                <span>H</span>
+        </div>
+        <div data-key="74" class="key">
+                <span>J</span>
+        </div>
+    </div>
+    
+    <audio data-key="65" src="sounds/SQGrey.mp3" type="audio/mp3"></audio>
+    <audio data-key="83" src="sounds/alligator3.mp3"></audio>
+    <audio data-key="68" src="sounds/big_pig_snort.mp3"></audio>
+    <audio data-key="70" src="sounds/deepbark.mp3"></audio>
+    <audio data-key="71" src="sounds/grizzlybear.mp3"></audio>
+    <audio data-key="72" src="sounds/snakehiss2.mp3"></audio>
+    <audio data-key="74" src="sounds/wolf6.mp3"></audio>
+<script>
+
+    window.addEventListener('keydown', (e) => {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add('playing');
+    })
+    function removeTransition(e) {
+        if(e.propertyName !== 'transform') return;
+        this.classList.remove('playing');
+    }    
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+</script>
+</body>
+</html>

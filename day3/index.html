@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>OPA F <span class="h1">JS</span></h1>
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+        <input type="range" name="spacing" min="10" max="200" value="10"
+        data-sizing="px">
+
+        <label for="blur">Blur:</label>
+        <input type="range" 
+        name="blur" min="0" max="25" value="10" data-sizing="px">
+
+        <label for="base">Base Color</label>
+        <input type="color" name="base" value="#ffc600">
+        <label for="sizing">Sizing</label>
+        <input type="range" name="sizing" min="100" max="2500" value="500" data-sizing="px">
+    </div>
+
+
+    <img class="img" src="../../VegasProject/src/assets/icons/beach-1236581_1920.jpg" 
+    alt="background">
+
+    <style>
+    :root {
+        --base: red;
+        --spacing: 10px;
+        --blur: 10px;
+        --sizing: 500px;
+    }
+    img {
+        padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
+        width: var(--sizing);
+        height: var(--sizing);
+    }
+    .h1 {
+        color: var(--base);
+    }
+    </style>
+    <script>
+    const inputs = document.querySelectorAll('.controls input');
+    function handleUpdate() {
+        const suffix = this.dataset.sizing || '';
+        console.log(this);
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    }
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+    </script>
+</body>
+</html>
